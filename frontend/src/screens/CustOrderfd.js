@@ -5,13 +5,18 @@ export default function CustOrderfd() {
 
   async function loadData() {
     try {
-      let response = await fetch("http://localhost:5000/api/custorderdata", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ custEmail: localStorage.getItem("userEmail") }),
-      });
+      let response = await fetch(
+        "https://food-backend-y5cj.onrender.com/api/custorderdata",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            custEmail: localStorage.getItem("userEmail"),
+          }),
+        }
+      );
       response = await response.json();
       setOdata(response);
     } catch (err) {
@@ -79,7 +84,8 @@ export default function CustOrderfd() {
                   <tr
                     key={index}
                     style={{
-                      backgroundColor: index % 2 === 0 ? "#ffffff10" : "#ffffff05",
+                      backgroundColor:
+                        index % 2 === 0 ? "#ffffff10" : "#ffffff05",
                     }}
                   >
                     <th scope="row" style={{ color: "white" }}>

@@ -13,12 +13,15 @@ export default function Home() {
 
   async function loadData() {
     try {
-      let response = await fetch("http://localhost:5000/api/foodData", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let response = await fetch(
+        "https://food-backend-y5cj.onrender.com/api/foodData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

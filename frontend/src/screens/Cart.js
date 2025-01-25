@@ -19,17 +19,20 @@ export default function Cart(props) {
   console.log("cart", data);
 
   async function handleCheckOut(event) {
-    const response = await fetch("http://localhost:5000/api/cartorderdata", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: localStorage.getItem("userEmail"),
-        order: data,
-        price: totalPrice,
-      }),
-    });
+    const response = await fetch(
+      "https://food-backend-y5cj.onrender.com/api/cartorderdata",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: localStorage.getItem("userEmail"),
+          order: data,
+          price: totalPrice,
+        }),
+      }
+    );
 
     const json = await response.json();
     console.log(json);

@@ -19,18 +19,21 @@ export default function Signup() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const response = await fetch("http://localhost:5000/api/createuser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: credentials.name,
-        email: credentials.email,
-        password: credentials.password,
-        location: credentials.location,
-      }),
-    });
+    const response = await fetch(
+      "https://food-backend-y5cj.onrender.com/api/createuser",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: credentials.name,
+          email: credentials.email,
+          password: credentials.password,
+          location: credentials.location,
+        }),
+      }
+    );
 
     const json = await response.json();
 
