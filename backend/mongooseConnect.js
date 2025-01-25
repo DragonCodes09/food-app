@@ -1,10 +1,8 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
-
 const mongodb = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://dragon_codes_2:Toothless_2@dragon-cluster.igxyh.mongodb.net/"
-    );
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("DB connected");
     const foodCollection = await mongoose.connection.db.collection("food");
     const data = await foodCollection.find({}).toArray();
