@@ -1,0 +1,34 @@
+.fancy-alert {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .fancy-alert.success {
+    background: linear-gradient(120deg, #28a745, #66ff89);
+  }
+  
+  .fancy-alert.error {
+    background: linear-gradient(120deg, #ff4d4d, #ff6a6a);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
