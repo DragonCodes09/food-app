@@ -6,29 +6,28 @@ const app = express();
 const mongodb = require("./mongooseConnect");
 
 mongodb();
+
+// Enable CORS
 app.use(cors());
 
-// app.use((req,res,next)=>{
-//     res.setHeader("Access-Control-Allow-Origin","https://BCACCCCC.onrender.com/");
-//     res.header(
-//         "Access-Control-Allow-Headers",
-//         "Origin,X-Requested-With,Content-Type,Accept"
-//     );
-//     next();
-// })
+// Parse incoming JSON requests
 app.use(express.json());
+
+// Define API routes
 app.use("/api", require("./routes/CreateUser"));
 app.use("/api", require("./routes/DisplayData"));
 app.use("/api", require("./routes/CartOrderData"));
 app.use("/api", require("./routes/CustOrderData"));
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/client/build/index"));
+// Serve static files for the frontend
+app.use(express.static(path.join(__dirname, "frontend/build")));
 
-app.use(express.static(path.join(__dirname, "../client/build")));
-app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "../client/build/index.html"))
-);
+// Serve the index.html for all routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/build", "index.html"));
+});
+
+// Start the server
 app.listen(5000, () => {
-  console.log("server Started");
+  console.log("Server started on port 5000");
 });
